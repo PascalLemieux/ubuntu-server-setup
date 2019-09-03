@@ -49,20 +49,31 @@ function main() {
     sudo service ssh restart
 
     # Update everything
+    echo "Update and Upgrade. " >&3
     updateAndUpgrade
 
     # Install PIP
+    echo "Installing Python3 pip. " >&3
     setupPip
 
     # Install Virtual Env
+    echo "Installing Python3 venv. " >&3
     setupVenv
 
     # Install redis
+    echo "Installing redis-server. " >&3
     setupRedis
 
+    # Install redis
+    echo "Installing supervisor. " >&3
+    setupSupervisor
+
+    # Cleaning up
     cleanup
 
-    echo "Setup Done! Log file is located at ${output_file}" >&3
+    # Install redis
+    echo "Setup complete. " >&3
+    echo "Log file is located at ${output_file}" >&3
 }
 
 function setupSwap() {

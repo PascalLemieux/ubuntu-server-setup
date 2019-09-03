@@ -145,6 +145,15 @@ function setupVenv() {
     sudo apt-get --assume-yes install python3-venv
 }
 
+# install python3-pip
+function setupSupervisor() {
+    sudo apt-get update
+    sudo apt-get --assume-yes install supervisor
+    # Add a line to create a .conf file
+    # echo_supervisord_conf > /etc/supervisord.conf
+}
+
+
 # Gets the amount of physical memory in GB (rounded up) installed on the machine
 function getPhysicalMemory() {
     local phymem

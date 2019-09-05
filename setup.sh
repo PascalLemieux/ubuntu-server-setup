@@ -61,12 +61,16 @@ function main() {
     setupVenv
 
     # Install redis
-    echo "Installing redis-server. " >&3
+    echo "Installing Redis-server. " >&3
     setupRedis
 
-    # Install redis
-    echo "Installing supervisor. " >&3
+    # Install supervisor
+    echo "Installing Supervisor. " >&3
     setupSupervisor
+
+    # Install Celery dir
+    echo "Preparing for Celery. " >&3
+    setupCelery
 
     # Cleaning up
     cleanup

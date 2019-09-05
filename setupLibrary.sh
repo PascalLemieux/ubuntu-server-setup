@@ -120,32 +120,27 @@ function configureNTP() {
     sudo apt-get --assume-yes install ntp
 }
 
-# run initial apt-get update and upgrade
 function updateAndUpgrade() {
     sudo apt-get --assume-yes update
     sudo apt-get --assume-yes upgrade
 }
 
-# install redis-server
 function setupRedis() {
     sudo apt-get update
     sudo apt-get --assume-yes install redis-server
     sudo systemctl enable redis-server.service
 }
 
-# install python3-pip
 function setupPip() {
     sudo apt-get update
     sudo apt-get --assume-yes install python3-pip
 }
 
-# install python3-pip
 function setupVenv() {
     sudo apt-get update
     sudo apt-get --assume-yes install python3-venv
 }
 
-# install python3-pip
 function setupSupervisor() {
     sudo apt-get update
     sudo apt-get --assume-yes install supervisor
@@ -153,6 +148,10 @@ function setupSupervisor() {
     # echo_supervisord_conf > /etc/supervisord.conf
 }
 
+function setupCelery() {
+    mkdir /var/run/celery
+    mkdir /var/log/celery
+}
 
 # Gets the amount of physical memory in GB (rounded up) installed on the machine
 function getPhysicalMemory() {

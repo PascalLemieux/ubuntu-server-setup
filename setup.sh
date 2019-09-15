@@ -18,6 +18,7 @@ includeDependencies
 output_file="output.log"
 
 function main() {
+
     read -rp "Enter the username of the new user account:" username
 
     promptForPassword
@@ -68,9 +69,9 @@ function main() {
     echo "Installing Supervisor. " >&3
     setupSupervisor
 
-    # Install Celery dir
-    echo "Preparing for Celery. " >&3
-    setupCelery
+    # Install PyPy
+    echo "Installing PyPy. " >&3
+    installPypy36
 
     # Cleaning up
     cleanup
@@ -78,6 +79,14 @@ function main() {
     # Install redis
     echo "Setup complete. " >&3
     echo "Log file is located at ${output_file}" >&3
+}
+
+function installPypy36() {
+    sudo mkdir /usr/local/bin/pypy36/
+    sudo chmod a+rw /usr/local/bin/pypy36/
+    cd /usr/local/bin/pypy36/
+    sudo wget "https://bitbucket.org/pypy/pypy/downloads/pypy3.6-v7.1.1-linux64.tar.bz2"
+    sudo ln -s /usr/local/bin/pypy36/pypy3.6-v7.1.1-linux64/bin/pypy3 /usr/local/bin/pypy36/pypy36
 }
 
 function setupSwap() {
